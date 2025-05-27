@@ -38,8 +38,8 @@
 
   <script>
     function calcularPagamento() {
-      const horas = parseFloat(document.getElementById("horas").value);
-      const valorHora = parseFloat(document.getElementById("valor").value);
+      const horas = Number(document.getElementById("horas").value);
+      const valorHora = Number(document.getElementById("valor").value);
       const resultado = document.getElementById("resultado");
 
       if (horas <= 0) {
