@@ -47,6 +47,11 @@
         return;
       }
 
+      if (valorHora <= 0) {
+        resultado.innerHTML = "Erro: O valor por hora deve ser maior que zero.";
+        return;
+      }
+      
       const total = horas * valorHora;
       let mensagem = `Total a receber: R$ ${total.toFixed(2)}`;
 
