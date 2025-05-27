@@ -1,11 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Calculadora de Horas Trabalhadas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+    }
+    label, input {
+      display: block;
+      margin-bottom: 10px;
+    }
+    #resultado {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    
+
+  <h1>Calculadora de Horas Trabalhadas</h1>
+  
+  <form onsubmit="event.preventDefault(); calcularPagamento();">
+    <label for="horas">Horas Trabalhadas:</label>
+    <input type="number" id="horas" name="horas" required>
+
+    <label for="valor">Valor por Hora (R$):</label>
+    <input type="number" id="valor" name="valor" step="0.01" required>
+
+    <button type="submit">Calcular</button>
+  </form>
+
+  <div id="resultado"></div>
+
+  <script>
+    function calcularPagamento() {
+      const horas = parseFloat(document.getElementById("horas").value);
+      const valorHora = parseFloat(document.getElementById("valor").value);
+      const resultado = document.getElementById("resultado");
+
+      if (horas <= 0) {
+        resultado.innerHTML = "Erro: O número de horas deve ser maior que zero.";
+        return;
+      }
+
+      const total = horas * valorHora;
+      let mensagem = `Total a receber: R$ ${total.toFixed(2)}`;
+
+      if (total > 2000) {
+        mensagem += "<br>🎉 Parabéns! Você ganhou mais de R$2000!";
+      }
+
+      resultado.innerHTML = mensagem;
+    }
+  </script>
+
 </body>
 </html>
