@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Classificador de Tarefa</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    #resultado {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Classificador de Nível de Tarefa</h2>
+
+  <form onsubmit="classificarTarefa(event)">
+    <label for="atividade">Nome da Atividade:</label><br>
+    <input type="text" id="atividade" required><br><br>
+
+    <label for="prioridade">Prioridade:</label><br>
+    <select id="prioridade" required>
+      <option value="1">1 - Urgente</option>
+      <option value="2">2 - Importante</option>
+      <option value="3">3 - Opcional</option>
+    </select><br><br>
+
+    <button type="submit">Classificar</button>
+  </form>
+
+  <div id="resultado"></div>
+
+  <script>
+    function classificarTarefa(event) {
+      event.preventDefault();
+
+      const atividade = document.getElementById("atividade").value;
+      const prioridade = parseInt(document.getElementById("prioridade").value);
+      const resultado = document.getElementById("resultado");
+
+      let mensagem = "";
+
+      switch (prioridade) {
+        case 1:
+          mensagem = `A atividade "${atividade}" é urgente.`;
+          break;
+        case 2:
+          mensagem = `A atividade "${atividade}" é importante.`;
+          break;
+        case 3:
+          mensagem = `A atividade "${atividade}" é opcional.`;
+          break;
+        default:
+          mensagem = `Prioridade inválida para a atividade "${atividade}".`;
+      }
+
+      resultado.innerHTML = mensagem;
+    }
+  </script>
+</body>
+</html>
