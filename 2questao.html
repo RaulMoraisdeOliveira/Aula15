@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulador de Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    #mensagem {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Simulador de Login</h2>
+  <form onsubmit="login(event)">
+    <label for="email">E-mail:</label><br>
+    <input type="email" id="email" required><br><br>
+
+    <label for="senha">Senha:</label><br>
+    <input type="password" id="senha" required><br><br>
+
+    <button type="submit">Entrar</button>
+  </form>
+
+  <div id="mensagem"></div>
+
+  <script>
+    function login(event) {
+      event.preventDefault(); // impede o envio do formulário
+
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+
+      const emailValido = "raulmorais2010@gmail.com";
+      const senhaValida = "12345678";
+
+      const mensagem = document.getElementById("mensagem");
+
+      if (email === emailValido && senha === senhaValida) {
+        mensagem.innerHTML = "Login realizado com sucesso";
+        mensagem.style.color = "green";
+      } else {
+        mensagem.innerHTML = "E-mail ou senha inválidos";
+        mensagem.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>
